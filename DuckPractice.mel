@@ -1,36 +1,58 @@
 {
-int $legradius = 1
+int $legradius = 0.05;
 int $radius = 2;
 string $obj[];
 string $objects[];
 int $eyeradius = 0.5;
 int $bodyradius = 2.5;
 
-$obj = `polySphere -radius $radius`;
+$obj = `polySphere -radius $radius -name "head"`;
 move -absolute -worldSpace 0 ($radius*2) 0 $obj[0];
 $objects[size($objects)] = $obj [0];
 
-$obj = `polySphere -radius $eyeradius`;
+$obj = `polySphere -radius $eyeradius -name "eye1"`;
 move -absolute -worldSpace 1.6 4 -0.9 $obj[0];
 $objects [size($objects)] = $obj [0];
 
-$obj = `polySphere -radius $eyeradius`;
+$obj = `polySphere -radius $eyeradius -name "eye2"`;
 move -absolute -worldSpace 1.6 4 0.9 $obj[0];
 $objects [size($objects)] = $obj [0];
 
-$obj = `polyCube -w 1.278 -h 0.2 -d 1.0`; 
+$obj = `polyCube -w 1.278 -h 0.2 -d 1.0 -name "beak1"`; 
 move -absolute -worldSpace 1.8 3.3 0 $obj[0];
 rotate 0 0 20;
+$objects[size($objects)] = $obj [0];
 
-$obj = `polyCube -w 1.278 -h 0.2 -d 1.0`; 
+$obj = `polyCube -w 1.278 -h 0.2 -d 1.0 -name "beak2"`; 
 move -absolute -worldSpace 1.7 3 0 $obj[0];
 rotate 0 0 -20;
+$objects[size($objects)] = $obj [0];
 
-$obj = `polySphere -radius $bodyradius`;
+$obj = `polySphere -radius $bodyradius -name "body"`;
 move -absolute -worldSpace 0 1 0 $obj[0];
 $objects[size($objects)] = $obj [0];
 
-$obj = `polyCylinder -axis 1 1 1`;
-move -absolute -worldSpace 1.9    -0.3    1.1;
+$obj = `polyCylinder -radius $legradius -name "leg1"`;
+move -absolute -worldSpace 2 0 1 ;
+rotate -20 0 90;
+scale -r 1 1.507681 1 ;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polyCylinder -radius $legradius -name "leg2"`;
+move -absolute -worldSpace 2 0 -1 ;
+rotate 20 0 90;
+scale -r 1 1.507681 1 ;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polyCube -w 0.4 -h 1.7 -d 1.3 -name "foot1"`;
+move -absolute -worldSpace 3.3 0.3 1.4;
+rotate 0 -20 0;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polyCube -w 0.4 -h 1.7 -d 1.3 -name "foot2"`;
+move -absolute -worldSpace 3.3 0.3 -1.4;
+rotate 0 20 0;
 $objects[size($objects)] = $obj [0];
 }
+
+polyUnite -ch 1 -mergeUVSets 1 -centerPivot -name beak1 beak1 head eye1 eye2 foot2 foot1 leg2 leg1 body beak2;
