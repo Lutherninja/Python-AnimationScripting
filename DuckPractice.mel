@@ -1,0 +1,36 @@
+{
+int $legradius = 1
+int $radius = 2;
+string $obj[];
+string $objects[];
+int $eyeradius = 0.5;
+int $bodyradius = 2.5;
+
+$obj = `polySphere -radius $radius`;
+move -absolute -worldSpace 0 ($radius*2) 0 $obj[0];
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $eyeradius`;
+move -absolute -worldSpace 1.6 4 -0.9 $obj[0];
+$objects [size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $eyeradius`;
+move -absolute -worldSpace 1.6 4 0.9 $obj[0];
+$objects [size($objects)] = $obj [0];
+
+$obj = `polyCube -w 1.278 -h 0.2 -d 1.0`; 
+move -absolute -worldSpace 1.8 3.3 0 $obj[0];
+rotate 0 0 20;
+
+$obj = `polyCube -w 1.278 -h 0.2 -d 1.0`; 
+move -absolute -worldSpace 1.7 3 0 $obj[0];
+rotate 0 0 -20;
+
+$obj = `polySphere -radius $bodyradius`;
+move -absolute -worldSpace 0 1 0 $obj[0];
+$objects[size($objects)] = $obj [0];
+
+$obj = `polyCylinder -axis 1 1 1`;
+move -absolute -worldSpace 1.9    -0.3    1.1;
+$objects[size($objects)] = $obj [0];
+}
