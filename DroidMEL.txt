@@ -1,0 +1,67 @@
+{
+    int $radius = 3;
+    int $body = 4;
+    int $arm = 1;
+    int $rightarm = 1;
+    string $obj[];
+    string $objects[];
+    
+    $obj = `polySphere -r $radius -name "head"`;
+        move -a -worldSpace 0 7 0;
+        select -r head.f[215] ;
+select -tgl head.f[216] ;
+select -add head.f[200:219] ;
+select -tgl head.f[195] ;
+select -tgl head.f[196] ;
+select -add head.f[180:199] ;
+select -tgl head.f[175] ;
+select -tgl head.f[176] ;
+select -add head.f[160:179] ;
+select -tgl head.f[155] ;
+select -tgl head.f[156] ;
+select -add head.f[140:159] ;
+select -tgl head.f[135] ;
+select -tgl head.f[136] ;
+select -add head.f[120:139] ;
+polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx -1.192092896e-07 -pvy 4.927513227 -pvz -1.788139343e-07 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 head.f[120:219];
+scale -r -p -1.19209e-07cm 4.927513cm -1.78814e-07cm 0.889142 0.889142 0.889142 ;
+scale -r -p -1.19209e-07cm 4.927513cm -1.78814e-07cm 1 1.087459 1 ;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -r $body -name "body"`;
+scale -r 1 0.580177 1 ;
+scale -r 1 1.375631 1 ;
+move -a -worldSpace 0 1.2 0;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $arm`;
+move -absolute -worldSpace ($arm*-2) 3 0 $obj[0];
+$arm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $arm`;
+move -absolute -worldSpace ($arm*-2) 3 0 $obj[0];
+$arm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $arm`;
+move -absolute -worldSpace ($arm*-2) 3 0 $obj[0];
+$arm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $rightarm`;
+move -absolute -worldSpace ($rightarm*2) 3 0 $obj[0];
+$rightarm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $rightarm`;
+move -absolute -worldSpace ($rightarm*2) 3 0 $obj[0];
+$rightarm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $rightarm`;
+move -absolute -worldSpace ($rightarm*2) 3 0 $obj[0];
+$rightarm++;
+$objects[size($objects)] = $obj [0];
+
+}
