@@ -1,6 +1,8 @@
 {
     int $radius = 3;
-    int $shoulderradius = 1;
+    int $body = 4;
+    int $arm = 1;
+    int $rightarm = 1;
     string $obj[];
     string $objects[];
     
@@ -24,6 +26,42 @@ select -add head.f[120:139] ;
 polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx -1.192092896e-07 -pvy 4.927513227 -pvz -1.788139343e-07 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 head.f[120:219];
 scale -r -p -1.19209e-07cm 4.927513cm -1.78814e-07cm 0.889142 0.889142 0.889142 ;
 scale -r -p -1.19209e-07cm 4.927513cm -1.78814e-07cm 1 1.087459 1 ;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -r $body -name "body"`;
+scale -r 1 0.580177 1 ;
+scale -r 1 1.375631 1 ;
+move -a -worldSpace 0 1.2 0;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $arm`;
+move -absolute -worldSpace ($arm*-2) 3 0 $obj[0];
+$arm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $arm`;
+move -absolute -worldSpace ($arm*-2) 3 0 $obj[0];
+$arm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $arm`;
+move -absolute -worldSpace ($arm*-2) 3 0 $obj[0];
+$arm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $rightarm`;
+move -absolute -worldSpace ($rightarm*2) 3 0 $obj[0];
+$rightarm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $rightarm`;
+move -absolute -worldSpace ($rightarm*2) 3 0 $obj[0];
+$rightarm++;
+$objects[size($objects)] = $obj [0];
+
+$obj = `polySphere -radius $rightarm`;
+move -absolute -worldSpace ($rightarm*2) 3 0 $obj[0];
+$rightarm++;
 $objects[size($objects)] = $obj [0];
 
 }
