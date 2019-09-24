@@ -1,0 +1,45 @@
+//FOR LOOPS
+
+string $names[] = ("bill", "mary", "Jon");
+
+for ($i = 0; $i<size($names); $i++)
+{
+	print ("My name is " + $names [$i]);
+}
+//the code above and this code below do the same thing it will print out the entire
+// array $names if ran
+
+for ($item in $names) 
+{
+	print ("My name is " + $item);
+} 
+// so this code isn't working... Will have to mess with it later
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
+string $sel[] = `ls -sl`;
+
+endString($sel[0], 4);
+///// endsWith
+string $sel[] = `ls -sl`;
+
+endsWith($sel[0], "Geo");
+
+////////////////////////////////////////////////////////////////////////
+string $name1[] = ("bill", "Marry", "jaquin");
+string $name2[] = ("nancy", "robert", "h");
+
+
+
+format -stringArg $name1[0] -stringArg $name2[0] "Our names are ^2s and ^1s!"
+
+//////////////////////////////////////////////////////////////
+
+string $test = "I like big butts lolol"
+
+string $tokens[];
+
+tokenize $test " ";
+print $tokens;
