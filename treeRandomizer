@@ -1,0 +1,12 @@
+{
+string $sels = `ls-sl`;
+ 
+proc ForestGenerator (int $size, float $xpos, float $xneg, float $yneg  float $ypos, float $zpos, float $zneg)
+{
+
+
+}
+
+
+
+}
