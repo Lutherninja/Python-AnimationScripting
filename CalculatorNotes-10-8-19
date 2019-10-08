@@ -1,0 +1,131 @@
+//Calculator App
+
+float $nums[] 5 , 10;
+float $a = 3;
+float $b = 6;
+
+
+print ($a + " + " + $b + " + " + Add($a, $b));
+
+proc float Add(float $num1, float $num2)
+{
+	float $total;
+	$total = $num1 + $num2;
+
+	return $total;
+}
+
+Add (3, 6)
+// another way to use the Add function
+float $sum = 0;
+print ($sum + "/n");
+$sum = Add(3, 6);
+print $sum;
+// above is taking the Add funciton and then using the total from the Add function and then storing it into the $sum variable.
+
+//adding an array in 
+proc float Add (float $num[])
+{
+float $total;
+$total = $num[0] + $num[1];
+
+return $total;
+}
+
+float $values [] = 3, 5;
+Add({2,5});
+// below is using the array and using a for loop to add all the values in  the array
+
+
+///////////Addtion
+
+proc float Add (float $num[])
+{
+    $total = 0;
+    
+    for($i = 0; $i < size($num); $i++)
+{
+    $total = $total + $num[$i];
+}
+
+
+return $total;
+}
+
+
+
+Add({2,5,6,8,7});
+
+///////////////Subtraction
+
+proc float Subtract (float $num[])
+{
+    $total = $num[0];
+    
+    for($i = 1; $i < size($num); $i++)
+{
+    $total = $total - $num[$i];
+}
+
+
+return $total;
+}
+
+
+
+Subtract({30,10});
+
+/////////////////Multiplacation
+proc float Multiply (float $num[])
+{
+    $total = $num[0];
+    
+    for($i = 1; $i < size($num); $i++)
+{
+    $total = $total + $num[$i];
+}
+
+
+return $total;
+}
+
+
+
+Multiply({2,5});
+
+/////////////////Division
+proc float Divide (float $num[])
+{
+    $total = $num[0];
+    
+    for($i = 1; $i < size($num); $i++)
+{
+    $total = $total / $num[$i];
+}
+
+
+return $total;
+}
+
+
+
+Divide({6,3});
+
+///////Power
+proc float Xponent (float $num[])
+{
+    $total = $num[0];
+	float $power = $num[1]
+    
+    for($i = 1; $i < $power; $i++)
+{
+    $total = $total  $num[$i];
+}
+
+
+return $total;
+}
+
+
+
+Xponent({6,3});
