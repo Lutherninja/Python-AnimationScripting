@@ -1,0 +1,22 @@
+global proc string NameGnerator ()
+{
+string $names[] = ("Bill", "Bob", "Timmy", "Jill")
+return $names [GenerateNum($names)];
+
+}
+
+global proc string InsultGenerator90 
+{
+	string $insults[] = ("U ugly", "ha u dum", "wowza u really dum");
+	
+	return $insults [GenerateNum($insults)];
+}
+
+global proc int Age(int $currentAge)
+{
+	float $factor = 1.6;
+	float $newAge = `ceil($currentAge * $factor)`;
+	
+	return $newAge;
+	
+}
