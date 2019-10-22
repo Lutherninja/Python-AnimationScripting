@@ -79,7 +79,19 @@ global proc flaot Median (float $num[])
     $total = $num[0]
 }
 
+//////Mean
+global proc float Mean (float $num[])
+{
+	$total = $num[0];
+	
+	for($i = 1; $i < size ($num); $i++)
+	{
+	$total = ($total + $num[$i]);
+	}
+	return $total  / size ($num);
+}
 
+Mean ({5,6,8,4});
 /////////Power
 global proc float Xponent (float $num[])
 {
@@ -91,6 +103,8 @@ global proc float Xponent (float $num[])
 
 
 Xponent({6,3});
+
+
 
 
 ///// Calculator
@@ -117,4 +131,8 @@ proc Calculator (float $operations, float $digits[])
     {
         print (Xponent($digits));
     }
+       else if (operations == 5)
+       {
+        print (Mean($digits));      
+       }
 }
