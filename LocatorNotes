@@ -1,0 +1,18 @@
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+	delete $dups[0];
+
+ 
+}
+
+listRelatives -shapes "pSphere1"

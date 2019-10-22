@@ -1,0 +1,682 @@
+running deadline command: -getrepositoryfilepath submission/Maya/Main/SubmitMayaToDeadline.mel
+Running submission script "'deadlinecommand.exe' is not recognized as an internal or external command,
+operable program or batch file."
+// Warning: file: C:/Users/10689129/Documents/maya/scripts/DeadlineMayaClient.mel line 132: The SubmitMayaToDeadline.mel script could not be found in the Deadline Repository. Please make sure that the Deadline Client has been installed on this machine, that the Deadline Client bin folder is set in the DEADLINE_PATH environment variable, and that the Deadline Client has been configured to point to a valid Repository. // 
+file -f -new;
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/rememberViewportSettings.mel line 29: Active stereo does not work with Aero enabled. Active stereo has been disabled. // 
+// untitled // 
+commandPort -securityWarning -name commandportDefault;
+onSetCurrentLayout "Maya Classic";
+// Warning: file: C:\Users\10689129\Documents\maya\2018\prefs\filePathEditorRegistryPrefs.mel line 4: filePathEditor: Attribute 'aiImage.filename' is invalid or is not designated 'usedAsFilename'. // 
+// Warning: file: C:\Users\10689129\Documents\maya\2018\prefs\filePathEditorRegistryPrefs.mel line 5: filePathEditor: Attribute 'aiStandIn.dso' is invalid or is not designated 'usedAsFilename'. // 
+// Warning: file: C:\Users\10689129\Documents\maya\2018\prefs\filePathEditorRegistryPrefs.mel line 6: filePathEditor: Attribute 'aiVolume.filename' is invalid or is not designated 'usedAsFilename'. // 
+// AbcExport v1.0 using Alembic 1.5.8 (built Jul 13 2016 18:28:45) // 
+# pymel.core : Updating pymel with pre-loaded plugins: invertShape, mayaHIK, GamePipeline, CloudImportExport, curveWarp, tiffFloatReader, MASH, poseInterpolator, bifrostvisplugin, ATFPlugin, hairPhysicalShader, ikSpringSolver, ik2Bsolver, xgenToolkit, AbcExport, retargeterNodes, VectorRender, gameFbxExporter, OpenEXRLoader, lookdevKit, Unfold3D, Type, mayaCharacterization, modelingToolkit, deformerEvaluator, renderSetup, GPUBuiltInDeformer, fbxmaya # 
+evalDeferred "shaderBallRendererMenuUpdate";
+// Warning: line 1: filePathEditor: Attribute 'aiStandIn.dso' and label 'Standin' have been saved already. // 
+// Warning: line 1: filePathEditor: Attribute 'aiVolume.filename' and label 'VDB' have been saved already. // 
+// Warning: line 1: filePathEditor: Attribute 'aiImage.filename' and label 'Image' have been saved already. // 
+import arnold
+// Successfully imported python module 'arnold' // 
+import mtoa
+// Successfully imported python module 'mtoa' // 
+import mtoa.cmds.registerArnoldRenderer;mtoa.cmds.registerArnoldRenderer.registerArnoldRenderer()
+Maya 2018 importing module pymel 1.0.10 (C:\Program Files\Autodesk\Maya2018\Python\lib\site-packages\pymel\__init__.pyc)
+// Successfully registered renderer 'arnold' // 
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/autoLoadPlugin.mel line 35: Loading plug-in "mtoa" has resulted in changes to the scene that may need to be saved. // 
+// AbcImport v1.0 using Alembic 1.5.8 (built Jul 13 2016 18:28:45) // 
+updateRendererUI;
+updateRendererUI;
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/scriptEditorPanel.mel line 946: The -keyEquivalent/-ke flag has been removed. Keys can be set using the Hotkey Editor. // 
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/scriptEditorPanel.mel line 947: The -keyEquivalent/-ke flag has been removed. Keys can be set using the Hotkey Editor. // 
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/scriptEditorPanel.mel line 948: The -keyEquivalent/-ke flag has been removed. Keys can be set using the Hotkey Editor. // 
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/scriptEditorPanel.mel line 949: The -keyEquivalent/-ke flag has been removed. Keys can be set using the Hotkey Editor. // 
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/scriptEditorPanel.mel line 1007: The -keyEquivalent/-ke flag has been removed. Keys can be set using the Hotkey Editor. // 
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere1 polySphere1 // 
+move -r 10.050498 2.530593 0 ;
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere2 polySphere2 // 
+move -r -4.258755 5.124711 9.207878 ;
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere3 polySphere3 // 
+move -r -10.765022 -5.514368 -0.701883 ;
+select -r pSphere2 pSphere3 pSphere1 ;
+select -cl  ;
+//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	$bb = `xform -q -boundingBox $sels;
+	print ($bb);
+		
+	string $dups[] = `duplicate $sels`;
+// Error: 	$bb = `xform -q -boundingBox $sels;
+ // 
+// Error: Line 5.36: Syntax error // 
+// Error: line 1: Cannot convert data of type string[] to type string. // 
+//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	$bb = `xform -q -boundingBox $sels`;
+	print ($bb);
+		
+	string $dups[] = `duplicate $sels`;
+// Error: line 5: No valid objects supplied to 'xform' command. // 
+select -r pSphere2 pSphere3 pSphere1 ;
+//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	$bb = `xform -q -boundingBox $sels`;
+	print ($bb);
+		
+	string $dups[] = `duplicate $sels`;
+// Error: line 5: Only one object allowed for a query. // 
+string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+// Warning: string $sels[] = 	`ls -sl`;
+ // 
+// Warning: Line 1.27 : Redeclaration of variable "$sels" shadows previous declaration at line 2. Previous value will be overwritten by explicit initializer. // 
+// Warning: 	float $bb [];
+ // 
+// Warning: Line 3.14 : Redeclaration of variable "$bb" shadows previous declaration at line 4. Previous value will be retained. // 
+// Warning: 	string $dups[] = `duplicate $sels`;
+ // 
+// Warning: Line 5.36 : Redeclaration of variable "$dups" shadows previous declaration at line 8. Previous value will be overwritten by explicit initializer. // 
+move -r 0 3.16169 0 ;
+// Undo: move -r 0 3.16169 0  // 
+//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+		$bb = `xform -q -boundingBox $sels;
+		print ($bb);
+// Warning: 	string $dups[] = `duplicate $sels`;
+ // 
+// Warning: Line 6.36 : Redeclaration of variable "$dups" shadows previous declaration at line 8. Previous value will be overwritten by explicit initializer. // 
+// Error: 		$bb = `xform -q -boundingBox $sels;
+ // 
+// Error: Line 10.37: Syntax error // 
+//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+		$bb = `xform -q -boundingBox $sels`;
+		print ($bb);
+// Warning: 	string $dups[] = `duplicate $sels`;
+ // 
+// Warning: Line 6.36 : Redeclaration of variable "$dups" shadows previous declaration at line 8. Previous value will be overwritten by explicit initializer. // 
+// Error: line 7: Invalid selection : polyUnite needs at least 2 polygonal objects. // 
+select -cl  ;
+select -r pSphere2 pSphere3 polySurface2 polySurface1 pSphere1 ;
+//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+		$bb = `xform -q -boundingBox $sels`;
+		print ($bb);
+// Warning: 	string $dups[] = `duplicate $sels`;
+ // 
+// Warning: Line 6.36 : Redeclaration of variable "$dups" shadows previous declaration at line 8. Previous value will be overwritten by explicit initializer. // 
+// Error: line 10: Only one object allowed for a query. // 
+move -r 0 5.691307 0 ;
+select -r polySurface2 polySurface1 pSphere1 ;
+move -r 0 2.798153 0 ;
+select -cl  ;
+select -r pSphere2 pSphere3 polySurface2 polySurface5 polySurface1 pSphere1 ;
+doDelete;
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere1 polySphere1 // 
+move -r 7.141901 5.684552 -4.892923 ;
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere2 polySphere2 // 
+move -r 0.155598 7.856697 1.21768 ;
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere3 polySphere3 // 
+move -r 4.418511 -4.436723 -4.389211 ;
+select -cl  ;
+select -r pSphere3 pSphere2 pSphere1 ;
+string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+		$bb = `xform -q -boundingBox $dups`;
+		print ($bb);
+// Warning: string $sels[] = 	`ls -sl`;
+ // 
+// Warning: Line 1.27 : Redeclaration of variable "$sels" shadows previous declaration at line 2. Previous value will be overwritten by explicit initializer. // 
+// Warning: 	float $bb [];
+ // 
+// Warning: Line 3.14 : Redeclaration of variable "$bb" shadows previous declaration at line 4. Previous value will be retained. // 
+// Warning: 	string $dups[] = `duplicate $sels`;
+ // 
+// Warning: Line 5.36 : Redeclaration of variable "$dups" shadows previous declaration at line 8. Previous value will be overwritten by explicit initializer. // 
+// Error: line 9: No object matches name: polyUnite1 // 
+select -cl  ;
+select -r polySurface1 pSphere3 pSphere2 pSphere1 ;
+doDelete;
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere1 polySphere1 // 
+move -r 5.582474 8.133993 -3.192519 ;
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere2 polySphere2 // 
+move -r -1.771833 10.213707 3.204535 ;
+CreatePolygonSphere;
+polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+// Result: pSphere3 polySphere3 // 
+move -r 0.533521 -3.512406 -1.039752 ;
+select -r pSphere2 pSphere1 pSphere3 ;
+string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+		$bb = `xform -q -boundingBox $dups[0]`;
+		print ($bb);
+// Warning: string $sels[] = 	`ls -sl`;
+ // 
+// Warning: Line 1.27 : Redeclaration of variable "$sels" shadows previous declaration at line 2. Previous value will be overwritten by explicit initializer. // 
+// Warning: 	float $bb [];
+ // 
+// Warning: Line 3.14 : Redeclaration of variable "$bb" shadows previous declaration at line 4. Previous value will be retained. // 
+// Warning: 	string $dups[] = `duplicate $sels`;
+ // 
+// Warning: Line 5.36 : Redeclaration of variable "$dups" shadows previous declaration at line 8. Previous value will be overwritten by explicit initializer. // 
+-2.771833
+-4.512406
+-4.192519
+6.582474
+11.213707
+4.204535
+select -cl  ;
+// Undo: select -cl   // 
+// Undo: string $sels[] = 	`ls -sl`;
+	
+	float $bb [];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+		$bb = `xform -q -boundingBox $dups[0]`;
+		print ($bb); // 
+select -cl  ;
+select -r pSphere1 pSphere3 ;
+select -r pSphere2 pSphere1 pSphere3 ;
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+
+
+ 
+};
+-2.771833
+-4.512406
+-4.192519
+6.582474
+11.213707
+4.204535
+select -cl  ;
+select -r polySurface1 ;
+// Undo: select -r polySurface1  // 
+// Undo: select -cl   // 
+// Undo: {
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+
+
+ 
+} // 
+select -r pSphere2 pSphere1 pSphere3 ;
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+	delete $dups[0];
+
+ 
+};
+-2.771833
+-4.512406
+-4.192519
+6.582474
+11.213707
+4.204535
+select -r pSphere2 pSphere1 pSphere3 ;
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+	spawnLocator xMid, yMid, zMid;
+	
+		
+	delete $dups[0];
+	
+ 
+};
+// Error: 	spawnLocator xMid, yMid, zMid;
+ // 
+// Error: Line 31.19: Syntax error // 
+select -cl  ;
+select -r pSphere2 pSphere1 pSphere3 ;
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spawnLocator xMid, yMid, zMid;
+	
+		
+	delete $dups[0];
+	
+ 
+};
+// Error: spawnLocator xMid, yMid, zMid;
+ // 
+// Error: Line 31.18: Syntax error // 
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spawnLocator (xMid, yMid, zMid);
+	
+		
+	delete $dups[0];
+	
+ 
+};
+// Error: spawnLocator (xMid, yMid, zMid);
+ // 
+// Error: Line 31.19: Invalid use of Maya object "xMid". // 
+// Error: spawnLocator (xMid, yMid, zMid);
+ // 
+// Error: Line 31.25: Invalid use of Maya object "yMid". // 
+// Error: spawnLocator (xMid, yMid, zMid);
+ // 
+// Error: Line 31.31: Invalid use of Maya object "zMid". // 
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spawnLocator ($xMid, $yMid, $zMid);
+	
+		
+	delete $dups[0];
+	
+ 
+};
+-2.771833
+-4.512406
+-4.192519
+6.582474
+11.213707
+4.204535
+// Error: line 31: Cannot find procedure "spawnLocator". // 
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spaceLocator -p ($xMid, $yMid, $zMid);
+	
+		
+	delete $dups[0];
+	
+ 
+};
+// Error: spaceLocator -p ($xMid, $yMid, $zMid);
+ // 
+// Error: Line 31.23: Syntax error // 
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spaceLocator -p $xMid $yMid $zMid;
+	
+		
+	delete $dups[0];
+	
+ 
+};
+// Error: line 9: Invalid selection : polyUnite needs at least 2 polygonal objects. // 
+select -r pSphere1 ;
+move -r -1.145028 -0.122421 0 ;
+// Undo: move -r -1.145028 -0.122421 0  // 
+// Undo: select -r pSphere1  // 
+// Undo: {
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spaceLocator -p $xMid $yMid $zMid;
+	
+		
+	delete $dups[0];
+	
+ 
+} // 
+// Undo: {
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spawnLocator ($xMid, $yMid, $zMid);
+	
+		
+	delete $dups[0];
+	
+ 
+} // 
+select -r pSphere2 pSphere1 pSphere3 ;
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
+
+	
+	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
+	
+
+	$bb = `xform -q -boundingBox $dups[0]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spaceLocator -p $xMid $yMid $zMid;
+	
+		
+	delete $dups[0];
+	
+ 
+};
+-2.771833
+-4.512406
+-4.192519
+6.582474
+11.213707
+4.204535
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/scriptEditorPanel.mel line 635: The -keyEquivalent/-ke flag has been removed. Keys can be set using the Hotkey Editor. // 
+// Warning: file: C:/Program Files/Autodesk/Maya2018/scripts/startup/scriptEditorPanel.mel line 636: The -keyEquivalent/-ke flag has been removed. Keys can be set using the Hotkey Editor. // 
