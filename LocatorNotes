@@ -2,17 +2,66 @@
 	//making a string that returns your selection
 	string $sels[] = 	`ls -sl`;
 	float $bb[];
+
+	
 	
 	string $dups[] = `duplicate $sels`;
 	$dups = `polyUnite $dups`;
 	delete -ch $dups;
 	
+
 	$bb = `xform -q -boundingBox $dups[0]`;
 	print ($bb);
 		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spaceLocator -p $xMid $yMid $zMid;
+	
+		
 	delete $dups[0];
-
- 
 }
+//////////////////     Making a Locator at the center of each object in Array   ////////////////
+{
+	//making a string that returns your selection
+	string $sels[] = 	`ls -sl`;
+	float $bb[];
 
-listRelatives -shapes "pSphere1"
+	
+	
+	
+	
+
+	$bb = `xform -q -boundingBox $sels[$i]`;
+	print ($bb);
+		
+		float $xMid;
+			float $yMid;
+				float $zMid;
+	
+	float $xMin = $bb[0];
+	float $xMax = $bb[3];
+	float $yMin = $bb[1];
+	float $yMax = $bb[4];
+	float $zMin = $bb[2];
+	float $zMax = $bb[5];
+	
+	$xMid = ($xMin + $xMax)/2;
+	$yMid = ($yMin + $yMax)/2;
+	$zMid = ($zMin + $zMax)/2;
+	
+spaceLocator -p $xMid $yMid $zMid;
+	
+}
