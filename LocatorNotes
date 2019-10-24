@@ -1,5 +1,6 @@
+////////////////////Making a Locator in the center of all selected objects////////////////
 {
-	//making a string that returns your selection
+	
 	string $sels[] = 	`ls -sl`;
 	float $bb[];
 
@@ -35,33 +36,29 @@ spaceLocator -p $xMid $yMid $zMid;
 }
 //////////////////     Making a Locator at the center of each object in Array   ////////////////
 {
-	//making a string that returns your selection
 	string $sels[] = 	`ls -sl`;
-	float $bb[];
 
 	
+	for($i=0; $i<size($sels); $i++)
+    {
+        float $boundingbox[] = `xform -q -boundingBox $sels[$i]`;
+        //midpoint formula using $boundingbox which will have 6 items, in the order x min y min z min x max y max z max
+         float $xMid;
+			    float $yMid;
+				    float $zMid;
 	
+	    float $xMin = $boundingbox[0];
+	    float $xMax = $boundingbox[3];
+	    float $yMin = $boundingbox[1];
+	    float $yMax = $boundingbox[4];
+	    float $zMin = $boundingbox[2];
+	    float $zMax = $boundingbox[5];
 	
+	    $xMid = ($xMin + $xMax)/2;
+	    $yMid = ($yMin + $yMax)/2;
+	    $zMid = ($zMin + $zMax)/2;
 	
-
-	$bb = `xform -q -boundingBox $sels[$i]`;
-	print ($bb);
-		
-		float $xMid;
-			float $yMid;
-				float $zMid;
-	
-	float $xMin = $bb[0];
-	float $xMax = $bb[3];
-	float $yMin = $bb[1];
-	float $yMax = $bb[4];
-	float $zMin = $bb[2];
-	float $zMax = $bb[5];
-	
-	$xMid = ($xMin + $xMax)/2;
-	$yMid = ($yMin + $yMax)/2;
-	$zMid = ($zMin + $zMax)/2;
-	
-spaceLocator -p $xMid $yMid $zMid;
-	
+        spaceLocator -p $xMid $yMid $zMid;
+    }
 }
+	

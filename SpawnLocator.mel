@@ -1,14 +1,17 @@
+////////////////////Making a Locator in the center of all selected objects////////////////
 {
-	//making a string that returns your selection
+	
 	string $sels[] = 	`ls -sl`;
 	float $bb[];
 
 	
 	
-	
+	string $dups[] = `duplicate $sels`;
+	$dups = `polyUnite $dups`;
+	delete -ch $dups;
 	
 
-	$bb = `xform -q -boundingBox $sels[$i]`;
+	$bb = `xform -q -boundingBox $dups[0]`;
 	print ($bb);
 		
 		float $xMid;
@@ -28,4 +31,33 @@
 	
 spaceLocator -p $xMid $yMid $zMid;
 	
+		
+	delete $dups[0];
+}
+//////////////////     Making a Locator at the center of each object in Array   ////////////////
+{
+	string $sels[] = 	`ls -sl`;
+
+	
+	for($i=0; $i<size($sels); $i++)
+    {
+        float $boundingbox[] = `xform -q -boundingBox $sels[$i]`;
+        //midpoint formula using $boundingbox which will have 6 items, in the order x min y min z min x max y max z max
+         float $xMid;
+			    float $yMid;
+				    float $zMid;
+	
+	    float $xMin = $boundingbox[0];
+	    float $xMax = $boundingbox[3];
+	    float $yMin = $boundingbox[1];
+	    float $yMax = $boundingbox[4];
+	    float $zMin = $boundingbox[2];
+	    float $zMax = $boundingbox[5];
+	
+	    $xMid = ($xMin + $xMax)/2;
+	    $yMid = ($yMin + $yMax)/2;
+	    $zMid = ($zMin + $zMax)/2;
+	
+        spaceLocator -p $xMid $yMid $zMid;
+    }
 }
