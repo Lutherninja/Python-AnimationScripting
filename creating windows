@@ -1,0 +1,23 @@
+if(window -exists $mWindow)
+	{
+		deleteUI -window $mWindow;
+	}
+
+string $mWindow = `window -title "My Window" -widthHeight 200 400`;
+
+string $mColumn = `columnLayout -p $mWindow -adjustableColumn 1`;
+
+button -p -$mColumn -label "Print \"Hello World\""
+					-command print (\"Hello World\")";
+button -p -$mColumn -label "Print \"GoodBye World\""
+					-command "PrintArg";
+button -p -$mColumn -label "Print \"Hello Darkness\"";
+
+
+showWindow $mWindow;
+
+
+global proc PrintArg(string $input)
+{
+	print ("Goodbye World");
+}
