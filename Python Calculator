@@ -1,0 +1,20 @@
+def Add(values):
+	'''
+	Adds two numbers together and returns result
+	input: list of float/int values
+	return: float
+	'''
+	sum = 0
+	for val in values:
+			sum += val
+		
+		
+	return sum
+	
+	
+def Power(value, power):
+       import math
+       return math.pow(value, power)
+       
+Power (2, 5)
+    
