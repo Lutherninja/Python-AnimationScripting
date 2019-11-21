@@ -1,0 +1,25 @@
+
+def calculator(values, operation):
+
+
+
+def add(values):
+	result=0;
+	for val in values:
+		result += val
+		
+	print result
+	return result
+	
+def subtract(values):
+	result = values[0]
+	
+	for i in range(len(values)):
+		result += val
+		
+	print result
+	return result
+	
+
+	
+subtract ([8,2,1])
