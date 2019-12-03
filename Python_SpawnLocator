@@ -1,0 +1,47 @@
+#Locater Spawner
+import maya.cmds as cmds
+    
+sels = cmds.ls(sl = True)
+
+dups = cmds.duplicate(sels)
+dups = cmds.polyUnite(dups)
+
+bbox = cmds.exactWorldBoundingBox(dups)
+print bbox
+xMin = bbox[0]
+xMax = bbox[3]
+yMin = bbox[1]
+yMax = bbox[4]
+zMin = bbox[2]
+zMax = bbox[5]
+
+xMid = (xMin + xMax)/2
+yMid = (yMin + yMax)/2
+zMid = (zMin + zMax)/2
+print xMid, yMid, zMid
+
+cmds.spaceLocator ( p=(xMid, yMid, zMid) )
+
+cmds.delete(dups)
+
+
+
+#Spawn locator in middle of everything selected
+
+import maya.cmds as cmds
+    
+sels = cmds.ls(sl = True)
+for comp in sels:
+	bbox = cmds.exactWorldBoundingBox(comp)
+	print bbox
+        xMin = bbox[0]
+        xMax = bbox[3]
+        yMin = bbox[1]
+        yMax = bbox[4]
+        zMin = bbox[2]
+        zMax = bbox[5]
+xMid = (xMin + xMax)/2
+yMid = (yMin + yMax)/2
+zMid = (zMin + zMax)/2
+
+cmds.spaceLocator ( p=(xMid, yMid, zMid) )

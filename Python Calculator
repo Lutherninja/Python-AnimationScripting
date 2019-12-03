@@ -17,4 +17,14 @@ def Power(value, power):
        return math.pow(value, power)
        
 Power (2, 5)
+
+
+def Subtract(values):
+    
+	difference = values[0]
+	for val in values[1:]
+			difference -= val
+		
+		
+	return difference
     
