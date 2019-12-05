@@ -20,20 +20,14 @@ class Toolbox():
 		cmds.button(p=self.m_column,
 					label='Change Color',
 					command=lambda *args: self.colorBtn())
-		cmds.button(p=self.m_column,
-					label='Select Everything',
-					command=lambda *args: self.selectBtn())						
+
 		
 		cmds.showWindow(self.window_name)
 		
 	def delete(self):
 		if cmds.window(self.window_name, exists=True):
 			cmds.deleteUI(self.window_name)
-	
-	def selectBtn():
-		import tools
-		tools.select_all()
-	
+
 	def colorBtn(self):
 		value = cmds.textField(self.color, q=True, text=True)
 		self.colorControl(value)
