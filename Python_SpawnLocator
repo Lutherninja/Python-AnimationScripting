@@ -22,7 +22,7 @@ print xMid, yMid, zMid
 
 cmds.spaceLocator ( p=(xMid, yMid, zMid) )
 
-cmds.delete(dups)
+cmds.delete(dups, ch = True)
 
 
 
@@ -32,16 +32,15 @@ import maya.cmds as cmds
     
 sels = cmds.ls(sl = True)
 for comp in sels:
-	bbox = cmds.exactWorldBoundingBox(comp)
-	print bbox
-        xMin = bbox[0]
-        xMax = bbox[3]
-        yMin = bbox[1]
-        yMax = bbox[4]
-        zMin = bbox[2]
-        zMax = bbox[5]
-xMid = (xMin + xMax)/2
-yMid = (yMin + yMax)/2
-zMid = (zMin + zMax)/2
-
-cmds.spaceLocator ( p=(xMid, yMid, zMid) )
+    bbox = cmds.exactWorldBoundingBox(comp)
+    print bbox
+    xMin = bbox[0]
+    xMax = bbox[3]
+    yMin = bbox[1]
+    yMax = bbox[4]
+    zMin = bbox[2]
+    zMax = bbox[5]
+    xMid = (xMin + xMax)/2
+    yMid = (yMin + yMax)/2
+    zMid = (zMin + zMax)/2
+    cmds.spaceLocator ( p=(xMid, yMid, zMid) )
