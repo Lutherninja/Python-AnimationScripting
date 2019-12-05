@@ -1,0 +1,11 @@
+#tools example
+import maya.cmds as cmds
+
+def selectAll():
+		cmds.select(all=True)
+		sels = cmds.ls(sl=True)
+		return sels
+
+def ball():
+	obj = cmds.polySphere('Ball_Geo') [0]
+	return obj
