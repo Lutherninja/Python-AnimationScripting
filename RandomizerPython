@@ -1,0 +1,22 @@
+import maya.cmds as cmds
+import random
+
+def Randomizer(xMax, xMin, yMax, yMin, zMax, zMin, num):
+
+    sels = cmds.ls(sl=True)
+    
+    #randomValues
+   
+    
+    for i in range(num):
+        #randomvalues
+        dups = cmds.duplicate(sels)
+        
+        xRand = random.uniform(xMax,xMin) 
+        yRand = random.uniform(yMax, yMin)
+        zRand = random.uniform(zMax, zMin)
+        
+        cmds.move(xRand, yRand, zRand, dups)
+       
+
+Randomizer(10, -10, 10, -10, 0, 0, 3)

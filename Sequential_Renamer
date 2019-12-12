@@ -1,0 +1,16 @@
+import maya.cdms as cmds
+
+'''listObj = cmds.ls(selection=True)
+
+for obj in listObj:
+	cmds.rename(obj, "number_" + str(listObj.index(obj)+1) )
+	
+for count,obj in enumerate(listObj):
+	cmds.rename(obj, "number_" + str(count +1).xfill(2) + "_GEO")
+'''	
+def myRenameFunc(a_name , a_padding, a_suffix):
+	listObj = cmds.ls(sl=True)
+	for count,obj in enumerate(listObj):
+		cmds.rename(obj, a_name + "_" + str(count +1).xfill(a_padding) + "_" + a_suffix)
+
+myRenameFunc("numbers", 2 , "GEO")
