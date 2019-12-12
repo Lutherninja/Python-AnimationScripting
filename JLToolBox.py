@@ -1,5 +1,6 @@
 # Toolbox
 import maya.cmds as cmds
+import random as random
 
 
 class Toolbox():
@@ -18,10 +19,34 @@ class Toolbox():
         cmds.button(p=self.m_column,
                     label='Change Color',
                     command=lambda *args: self.colorBtn())
-        self.randPos = cmds.textField(p=self.m_column)
+
+        cmds.text('xMax')
+        self.xMax = cmds.floatField(p=self.m_column)
+        cmds.text('xMin')
+        self.xMin = cmds.floatField(p=self.m_column)
+        cmds.text('yMax')
+        self.yMax = cmds.floatField(p=self.m_column)
+        cmds.text('yMin')
+        self.yMin = cmds.floatField(p=self.m_column)
+        cmds.text('zMax')
+        self.zMax = cmds.floatField(p=self.m_column)
+        cmds.text('zMin')
+        self.zMin = cmds.floatField(p=self.m_column)
+        cmds.text('Number of Duplicates')
+        self.num = cmds.intField(p=self.m_column)
+
         cmds.button(p=self.m_column,
                     label='Randomize',
                     command=lambda *args: self.randBtn())
+        cmds.text('Name')
+        self.a_name = cmds.textField(p=self.m_column)
+        cmds.text('Padding')
+        self.padding = cmds.intField(p=self.m_column)
+        cmds.text('Suffix')
+        self.a_suffix = cmds.textField(p=self.m_column)
+        cmds.button(p=self.m_column,
+                    label='Rename',
+                    command=lambda *args: self.renameBtn())
         cmds.button(p=self.m_column,
                     label='Spawn Locator in center of selection',
                     command=lambda *args: self.spawnCenterLocator())
@@ -41,9 +66,17 @@ class Toolbox():
         cmds.textField(self.color, q=True, text='')
 
     def randBtn(self):
-        parameters = cmds.textField(self.randPos, q=True, text=True)
-        self.Randomizer(parameters)
-        cmds.textField(self.randPos, q=True, text='')
+        self.Randomizer(cmds.floatField(self.xMax, q=True, value=True),
+                        cmds.floatField(self.xMin, q=True, value=True),
+                        cmds.floatField(self.yMax, q=True, value=True),
+                        cmds.floatField(self.yMin, q=True, value=True),
+                        cmds.floatField(self.zMax, q=True, value=True),
+                        cmds.floatField(self.zMin, q=True, value=True),
+                        cmds.intField(self.num, q=True, value=True))
+    def renameBtn(self):
+        self.renameFunc(cmds.textField(self.a_name, q=True, text=True),
+                        cmds.intField(self.padding, q=True, value=True),
+                        cmds.textField(self.a_suffix, q=True, text=True))
 
     def colorControl(self, colorname):
         if colorname == 'yellow':
@@ -52,7 +85,7 @@ class Toolbox():
             color = 6
         elif colorname == 'crimson':
             color = 4
-        elif colorname =='dark green':
+        elif colorname == 'dark green':
             color = 7
         elif colorname == 'purple':
             color = 8
@@ -132,7 +165,6 @@ class Toolbox():
     def Randomizer(self, xMax, xMin, yMax, yMin, zMax, zMin, num):
         sels = cmds.ls(sl=True)
 
-
         for i in range(num):
             # randomvalues
             dups = cmds.duplicate(sels)
@@ -143,6 +175,10 @@ class Toolbox():
 
             cmds.move(xRand, yRand, zRand, dups)
 
+    def renameFunc(self, a_name, a_padding, a_suffix):
+        listObj = cmds.ls(sl=True)
+        for count, obj in enumerate(listObj):
+            cmds.rename(obj, a_name + "_" + str(count + 1).zfill(a_padding) + "_" + a_suffix)
 
 
 myTool = Toolbox()
